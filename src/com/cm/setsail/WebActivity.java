@@ -28,10 +28,19 @@ public class WebActivity extends Activity implements OnClickListener{
 		setContentView(R.layout.activity_web);
 		//getting webView
 		myWebView = (WebView)findViewById(R.id.sailingWebView);
+		
+		/*
+		 * Screen Control: Optimal Usability: loads views zoomed out
+		 */
 		myWebView.getSettings().setUseWideViewPort(true);
 		myWebView.getSettings().setLoadWithOverviewMode(true);
-		//allows links to load in my custom web browser
+		
+		/*
+		 * Helps application perform action intended when clicking links
+		 * allows links to load in my custom web browser
+		 */
 		myWebView.setWebViewClient(new CustomBrowserView());
+		
 		//default URL
 		myWebView.loadUrl("http://sfsailing.com/sailing/index.cfm");
 		
@@ -40,7 +49,7 @@ public class WebActivity extends Activity implements OnClickListener{
 		findViewById(R.id.goForward).setOnClickListener(this);	
 	}
 	
-	//set up switch for buttons incase I add more functionality later
+	//set up switch for buttons in case I add more functionality later
 	@Override
 	public void onClick(View v) {
 		// set up switch case for buttons
