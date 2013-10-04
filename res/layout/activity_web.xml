@@ -2,6 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg"
     tools:context=".WebActivity" >
 
     <WebView
@@ -16,8 +17,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:background="@drawable/backbutton"
-        android:text="Back" />
+        android:background="@drawable/backbutton"/>
 
     <Button
         android:id="@+id/goForward"
@@ -25,7 +25,6 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/sailingWebView"
         android:layout_alignParentRight="true"
-        android:background="@drawable/forwardbutton"
-        android:text="Forward" />
+        android:background="@drawable/forwardbutton"/>
 
 </RelativeLayout>
