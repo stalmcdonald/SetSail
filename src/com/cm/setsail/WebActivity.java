@@ -30,6 +30,8 @@ public class WebActivity extends Activity implements OnClickListener{
 		myWebView = (WebView)findViewById(R.id.sailingWebView);
 		myWebView.getSettings().setUseWideViewPort(true);
 		myWebView.getSettings().setLoadWithOverviewMode(true);
+		//allows links to load in my custom web browser
+		myWebView.setWebViewClient(new CustomBrowserView());
 		//default URL
 		myWebView.loadUrl("http://sfsailing.com/sailing/index.cfm");
 		
