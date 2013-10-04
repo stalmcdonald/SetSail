@@ -21,11 +21,13 @@ import android.view.WindowManager;
 import android.view.View.OnClickListener;
 import android.webkit.WebView;
 import android.widget.Button;
+import android.widget.EditText;
 
 
 public class WebActivity extends Activity implements OnClickListener{
 	WebView myWebView;
-	Button goBack, goForward;
+	EditText urlText;
+	Button goBack, goForward, goButton;
 	
 	
 	@Override
@@ -36,6 +38,7 @@ public class WebActivity extends Activity implements OnClickListener{
 		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, 
 		                                WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		setContentView(R.layout.activity_web);
+		urlText = (EditText) findViewById(R.id.urlText);
 		//getting webView
 		myWebView = (WebView)findViewById(R.id.sailingWebView);
 		
@@ -55,6 +58,7 @@ public class WebActivity extends Activity implements OnClickListener{
 		//myWebView.loadUrl("http://sfsailing.com/sailing/index.cfm");
 		
 		//set up onclick listeners for buttons
+		findViewById(R.id.goButton).setOnClickListener(this);
 		findViewById(R.id.goBack).setOnClickListener(this);
 		findViewById(R.id.goForward).setOnClickListener(this);
 		
@@ -78,6 +82,11 @@ public class WebActivity extends Activity implements OnClickListener{
 	public void onClick(View v) {
 		// set up switch case for buttons
 		switch (v.getId()){
+		
+		case R.id.goButton:
+			myWebView.loadUrl(urlText.getText().toString());
+			break;
+			
 		/*
 		 * Custom back button functionality
 		 */
