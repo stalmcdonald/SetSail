@@ -8,8 +8,12 @@
 
 package com.cm.setsail;
 
+import java.net.URL;
+
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -42,11 +46,23 @@ public class WebActivity extends Activity implements OnClickListener{
 		myWebView.setWebViewClient(new CustomBrowserView());
 		
 		//default URL
-		myWebView.loadUrl("http://sfsailing.com/sailing/index.cfm");
+		//myWebView.loadUrl("http://sfsailing.com/sailing/index.cfm");
 		
 		//set up onclick listeners for buttons
 		findViewById(R.id.goBack).setOnClickListener(this);
-		findViewById(R.id.goForward).setOnClickListener(this);	
+		findViewById(R.id.goForward).setOnClickListener(this);
+		
+		Intent intent = getIntent();
+		Uri data = intent.getData();
+		URL url = null;
+		
+		try {
+			url = new URL(data.getScheme(), data.getHost(), data.getPath());
+		}catch(Exception e){
+			e.printStackTrace();	
+		}
+		WebView myWebView = (WebView) findViewById(R.id.sailingWebView);
+		myWebView.loadUrl(url.toString());
 	}
 	
 	//set up switch for buttons in case I add more functionality later
