@@ -8,46 +8,54 @@
 
 package com.cm.setsail;
 
-import java.net.URL;
-
+import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-import android.view.Menu;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.webkit.WebView;
+import android.widget.Button;
 
-public class WebActivity extends Activity {
-
-
-		@Override
-		protected void onCreate(Bundle savedInstanceState) {
-			//gets a reference and launches activity
-			super.onCreate(savedInstanceState);
-			setContentView(R.layout.activity_web);
-			Intent webIntent = getIntent();
-			
-			// gets Uri data from the intent object
-			Uri sailingData = webIntent.getData();
-			URL sfsailingURL = null;
-			
-			//Converts the Uri data to a URL object
-			try {
-				sfsailingURL = new URL(sailingData.getScheme(), sailingData.getHost(), sailingData.getPath());
-			}catch(Exception e){
-				e.printStackTrace();
-			}
-			
-			WebView webView = (WebView) findViewById(R.id.sailingWebView);
-			//converts URL to a String
-			webView.loadUrl(sfsailingURL.toString());
-		}
-
-		@Override
-		public boolean onCreateOptionsMenu(Menu menu) {
-			// Inflate the menu; this adds items to the action bar if it is present.
-			getMenuInflater().inflate(R.menu.activity_web, menu);
-			return true;
-		}
-
+@SuppressLint("SetJavaScriptEnabled")
+public class WebActivity extends Activity implements OnClickListener{
+	WebView myWebView;
+	Button goBack, goForward;
+	
+	
+	@Override
+	protected void onCreate(Bundle savedInstanceState){
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_web);
+		//getting webView
+		myWebView = (WebView)findViewById(R.id.sailingWebView);
+		myWebView.getSettings().setUseWideViewPort(true);
+		myWebView.getSettings().setLoadWithOverviewMode(true);
+		//default URL
+		myWebView.loadUrl("http://sfsailing.com/sailing/index.cfm");
+		
+		//set up onclick listeners for buttons
+		findViewById(R.id.goBack).setOnClickListener(this);
+		findViewById(R.id.goForward).setOnClickListener(this);	
 	}
+	
+	//set up switch for buttons incase I add more functionality later
+	@Override
+	public void onClick(View v) {
+		// set up switch case for buttons
+		switch (v.getId()){
+		case R.id.goBack:
+			if(myWebView.canGoBack()){
+				myWebView.goBack();
+			}
+			break;
+			
+		case R.id.goForward:
+			if(myWebView.canGoForward()){
+				myWebView.goForward();
+				break;
+			}
+		
+	}
+}
+
+	}//end
