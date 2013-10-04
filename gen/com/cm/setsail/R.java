@@ -11,11 +11,16 @@ public final class R {
     public static final class attr {
     }
     public static final class drawable {
-        public static final int ic_launcher=0x7f020000;
+        public static final int backbutton=0x7f020000;
+        public static final int bg=0x7f020001;
+        public static final int forwardbutton=0x7f020002;
+        public static final int ic_launcher=0x7f020003;
     }
     public static final class id {
-        public static final int menu_settings=0x7f070001;
-        public static final int webView1=0x7f070000;
+        public static final int goBack=0x7f070001;
+        public static final int goForward=0x7f070002;
+        public static final int menu_settings=0x7f070003;
+        public static final int sailingWebView=0x7f070000;
     }
     public static final class layout {
         public static final int activity_web=0x7f030000;
