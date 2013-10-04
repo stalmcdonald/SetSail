@@ -5,8 +5,27 @@
     tools:context=".WebActivity" >
 
     <WebView
-        android:id="@+id/webView1"
+        android:id="@+id/sailingWebView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_below="@+id/goBack" />
+
+    <Button
+        android:id="@+id/goBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/backbutton"
+        android:text="Back" />
+
+    <Button
+        android:id="@+id/goForward"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/sailingWebView"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/forwardbutton"
+        android:text="Forward" />
 
 </RelativeLayout>
